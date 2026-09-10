@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-// use Illuminate\resource\view\form;
+use App\Http\Controllers\ProductController;
 
 Route::inertia('/', 'welcome')->name('home');
 
@@ -53,9 +53,9 @@ Route::get('/bookings', function () {
     return "This is a named route";
 })->named('routing');
 
-Route::get('/home', function () {
-    return redirect()->route('routing');
-});
+// Route::get('/home', function () {
+//     return redirect()->route('routing');
+// });
 
 
 
@@ -74,6 +74,40 @@ Route::get('/form', function () {
 });
 
 
-Route::get('/product/{id}',function($id){
-  return "Product id : {$id}";
-})->where('$id','[1-9]+');
+// Route::get('/product/{id}',function($id){
+//   return "Product id : {$id}";
+// })->where('$id','[1-9]+');
+
+// Route::get('/product/{id}',function($id=10){
+//   return "this is route with name {$id}";
+// })->named('product.show');
+
+
+// Route::get('/home', function () {
+//     return redirect()->route('product.show',['id' =>10]);
+// });
+
+
+// Route::get('/product/{id?}', function($id=null) {
+
+//     return "this is route with name {$id}";
+
+// })->name('product.show');
+
+
+// Route::get('/home', function () {
+
+//     return redirect()->route('product.show', ['id' => 25]);
+
+// });
+
+
+// Route::get('/product',[ProductController::class,'show']);
+
+
+Route::get('/product/{id}',[ProductController::class,'show']);
+
+
+
+
+
